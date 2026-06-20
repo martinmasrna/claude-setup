@@ -27,6 +27,8 @@ You drive the progression. When a phase feels exhausted, **announce the transiti
 
 **Phase 5 — Converge.** Repeat teach-back, refining the file, until the **user** declares 100% alignment. The exit is always the user's call — never declare done yourself.
 
+**Phase 6 — Retrospective (self-improvement).** After the knowledge file is done, reflect on the *session itself* and improve this skill. See the section below.
+
 ## Why the file is created only at Phase 4
 
 Editing a file in place causes anchoring — you patch existing structure instead of rethinking. That is poison early, when ideas are still divergent. So Phases 1–3 stay in fluid chat with no file. The instant you switch from *asking* to *teaching* (Phase 4), the artifact appears and becomes the workbench. The hand-off point is the mode switch.
@@ -41,6 +43,21 @@ Write the file for a cold agent on a context budget. **As long as necessary, no 
 - **Include near-misses.** For key principles, add a counter-example that **shares surface features but violates the principle**. This forces the discriminator into the principle, where it belongs, because the surface can't tell the two apart.
 - **Anchor everything.** Every abstract criterion gets ≥1 concrete example that the user explicitly endorsed during the session. No free-floating maxims.
 - **Dissent log.** End the file with a short section capturing anything left unresolved and any point where the user overrode your instinct. Future agents benefit from knowing the soft spots, not just the settled doctrine.
+
+## Self-improvement (Phase 6 retrospective)
+
+After each session, improve this skill — but in a way that makes it *sharper*, never *bloated or drifted*. The skills folder (`~/.claude/skills/`) is a git repo; that is the audit trail and the rollback mechanism, so the skill file itself stays lean.
+
+**What qualifies as a lesson.** Only **generalizable process** insights — something that would help across *future, different* concepts. "The contrast pairs in Phase 3 worked better when I built them from the user's own examples" qualifies. Anything specific to today's topic does **not** — that belongs in the knowledge file, not here. When in doubt, it does not qualify.
+
+**Guard against the failure modes.** Do not encode noise from a single awkward session (overfitting). Do not append a growing changelog or pile on caveats (bloat) — the active `SKILL.md` is loaded into context every run, so edits must *refine existing instructions in place*, leaving the file the same length or shorter. Do not silently rewrite your own process (drift): every change is proposed first and committed with its reasoning.
+
+**The loop:**
+1. Reflect honestly: what worked, what fought you, what you'd do differently.
+2. If (and only if) there is a generalizable lesson, draft the specific `SKILL.md` edit as a **diff** and present it to the user with a one-line rationale.
+3. **The user approves before anything is written.** No approval, no change. (Same principle as the knowledge file: verify the exact thing that ships.)
+4. On approval, apply the edit and `git commit` from `~/.claude/skills/` with the lesson as the commit message (e.g. `extract-knowledge: build Phase 3 contrast pairs from the user's own examples`). The reflection lives in the message; `git log` is the history.
+5. If there is no worthwhile lesson, say so and commit nothing. A no-op retrospective is the common, correct outcome.
 
 ## Lifecycle
 
