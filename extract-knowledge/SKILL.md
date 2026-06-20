@@ -46,18 +46,14 @@ Write the file for a cold agent on a context budget. **As long as necessary, no 
 
 ## Self-improvement (Phase 6 retrospective)
 
-After each session, improve this skill — but in a way that makes it *sharper*, never *bloated or drifted*. The skills folder (`~/.claude/skills/`) is a git repo; that is the audit trail and the rollback mechanism, so the skill file itself stays lean.
+Read `LEARNINGS.md` (this skill's folder) at the start of every run and apply it. After the knowledge file is done, reflect on the *session itself*: did anything teach a reusable lesson — one that would help across *future, different* concepts? Insights specific to today's concept don't count **here** — those belong in the knowledge file. If there is a generalizable process lesson, **route it by kind**:
 
-**What qualifies as a lesson.** Only **generalizable process** insights — something that would help across *future, different* concepts. "The contrast pairs in Phase 3 worked better when I built them from the user's own examples" qualifies. Anything specific to today's topic does **not** — that belongs in the knowledge file, not here. When in doubt, it does not qualify.
+- **An elicitation heuristic, or a read on how this user's tacit knowledge surfaces** (which technique drew them out, where they stalled) → propose it in one line and, on their confirmation, **append to `LEARNINGS.md`**. The cheap staging area — low stakes, so real lessons get captured.
+- **A structural fix to the funnel itself** (a missing phase cue, a better transition) → propose the concrete `SKILL.md` edit and apply it **only on the user's explicit approval**.
 
-**Guard against the failure modes.** Do not encode noise from a single awkward session (overfitting). Do not append a growing changelog or pile on caveats (bloat) — the active `SKILL.md` is loaded into context every run, so edits must *refine existing instructions in place*, leaving the file the same length or shorter. Do not silently rewrite your own process (drift): every change is proposed first and committed with its reasoning.
+**Graduation.** When a staged learning has proven stable across sessions, propose promoting it *into* `SKILL.md` (on approval) and delete it from the log. Keep `LEARNINGS.md` pruned so it stays a staging area, not a changelog that bloats — the active `SKILL.md` is loaded every run, so it must stay lean. Edits that refine the procedure should land *in place*, leaving the file the same length or shorter.
 
-**The loop:**
-1. Reflect honestly: what worked, what fought you, what you'd do differently.
-2. If (and only if) there is a generalizable lesson, draft the specific `SKILL.md` edit as a **diff** and present it to the user with a one-line rationale.
-3. **The user approves before anything is written.** No approval, no change. (Same principle as the knowledge file: verify the exact thing that ships.)
-4. On approval, apply the edit and `git commit` from `~/.claude/skills/` with the lesson as the commit message (e.g. `extract-knowledge: build Phase 3 contrast pairs from the user's own examples`). The reflection lives in the message; `git log` is the history.
-5. If there is no worthwhile lesson, say so and commit nothing. A no-op retrospective is the common, correct outcome.
+**Hard rules.** Never edit `SKILL.md` without the user's explicit approval — no silent auto-edits, ever. Never write any lesson, to either file, silently; every change is proposed first, and on approval committed from `~/.claude/skills/` with its reasoning as the message (`git log` is the history). Guard against overfitting to one awkward session. A no-op retrospective — "nothing reusable today" — is the common, correct outcome; don't manufacture a lesson.
 
 ## Lifecycle
 

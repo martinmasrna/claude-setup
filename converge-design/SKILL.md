@@ -202,8 +202,24 @@ that's a different mode and belongs in a clean session with the real codebase lo
 
 Read `LEARNINGS.md` (in this skill's folder) at the start of every run and apply what's
 there. In EXPLORE, the session runs from the sandbox, not the skill folder — find the
-skill folder via `_context/skill-path.txt` (written during bootstrap) to locate it. At the **end** of a converged session, reflect: did anything this time teach a
-reusable heuristic about *this user's* taste or workflow? If so, **propose it** to the
-user in one line and append it to `LEARNINGS.md` **only on their confirmation**. Never
-write a lesson silently, and never edit this `SKILL.md` to "learn" — keep the stable
-spec and the accumulated taste separate.
+skill folder via `_context/skill-path.txt` (written during bootstrap) to locate it. At
+the **end** of a converged session, reflect: did anything teach a reusable lesson — one
+that would help on a *different* design next time? Observations specific to today's
+design don't count. If there is one, **route it by kind**:
+
+- **The user's design taste, or a workflow heuristic** (what they reach for, what they
+  reject, what made convergence faster) → propose it in one line and, on their
+  confirmation, **append to `LEARNINGS.md`**. The cheap staging area — low stakes, so
+  real lessons get captured.
+- **A structural fix to the procedure itself** (a missing gate, a better round
+  structure) → propose the concrete `SKILL.md` edit and apply it **only on the user's
+  explicit approval**.
+
+**Graduation.** When a staged learning has proven stable across sessions, propose
+promoting it *into* `SKILL.md` (on approval) and delete it from the log. Keep
+`LEARNINGS.md` pruned so it stays a staging area, not a parallel ruleset that rots.
+
+**Hard rules.** Never edit `SKILL.md` without the user's explicit approval — no silent
+auto-edits, ever. Never write any lesson, to either file, silently; every change is
+proposed first. A no-op retrospective is the common, correct outcome — don't manufacture
+a lesson.
