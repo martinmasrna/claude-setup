@@ -62,6 +62,8 @@ Think about the bigger picture before and after each fix:
 ### 8. Apply — the user's hands by default
 Default: hand the user precise changes and let them edit. Only when the user explicitly says *you* should do it, apply approved changes yourself — one at a time, showing the concrete diff for a final yes before it stays.
 
+When the user is applying by hand, give each change as **line N → remove `X` / add `Y`**, grouped by file, never as vague prose ("change X to Y") — and re-verify the line numbers against the current tree first, since files shift when the user edits in parallel.
+
 ### 9. Verify
 After edits land (whoever made them), if the project has tests / typecheck / build, run them and report results. Cleanliness must not cost correctness. Skip gracefully if there's nothing to run; never invent a test harness.
 
