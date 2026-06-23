@@ -13,7 +13,7 @@ Start by surfacing the **purpose and the "why."** This is non-negotiable and alw
 
 > "What do you want this prompt to do — and why? What's the underlying goal?"
 
-Everything downstream hangs on this. If the user gives a thin answer, gently dig until you understand the real intent behind the request.
+Everything downstream hangs on this, so it gets its **own opening turn** — ask it alone, nothing else bundled in (not even the calibration question). If the user gives a thin answer, or answers *what* without *why*, gently dig until you genuinely understand the real intent **before** moving to any technical dimension (target model, output format, etc.).
 
 ## Calibrate to the user (second question)
 
@@ -30,7 +30,7 @@ Self-reported comfort is unreliable — people under- and over-rate themselves. 
 
 ## How to run the interrogation
 
-- **Adaptive cadence.** Ask **one open-ended question at a time** while the possibility space is wide and answers are exploratory. As you converge and questions become yes/no or A/B/C, **start batching** them.
+- **Adaptive cadence — batch by answer-shape, not by stage.** Whenever a question deserves a paragraph answer, ask it **alone**. Batching paragraph-worthy questions pressures the user to answer fast just to clear the pile, wrecking quality on exactly the questions that need depth. Batch **only** questions that are genuinely yes/no or A/B/C — even late, after you've converged.
 - **Skip what's already clear.** Don't ask what the user has already told you. Read between the lines.
 - **Read between the lines and work with the bigger picture** — who consumes the output, what a great result looks like, what the prompt is really for.
 
