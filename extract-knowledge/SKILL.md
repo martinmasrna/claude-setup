@@ -1,6 +1,6 @@
 ---
 name: extract-knowledge
-description: Guided elicitation process that turns the user's tacit, hard-to-articulate understanding of a fuzzy concept (e.g. "clean code", "premium design", "deep explanation") into a cold-readable markdown file for future LLM agents. Use when the user wants to capture, externalize, document, or "extract" their intuitive definition/taste/standard for some concept, or to build/update an entry in their personal knowledge base at ~/.claude/knowledge/. Trigger phrases: "extract my understanding of X", "let's define what I mean by X", "capture my taste for X", "add X to my knowledge base".
+description: Guided elicitation process that turns the user's tacit, hard-to-articulate understanding of a fuzzy concept (e.g. "clean code", "premium design", "deep explanation") into a cold-readable markdown file for future LLM agents. Use when the user wants to capture, externalize, document, or "extract" their intuitive definition/taste/standard for some concept, or to build/update an entry in their personal knowledge base at ~/.claude/skills/_knowledge/. Trigger phrases: "extract my understanding of X", "let's define what I mean by X", "capture my taste for X", "add X to my knowledge base".
 ---
 
 # Extract Knowledge
@@ -23,7 +23,7 @@ You drive the progression. When a phase feels exhausted, **announce the transiti
 
 **Phase 3 — Probe.** Reach for whichever technique fits the concept's grain: **contrast pairs** (two snippets/designs — which is better, and *why*); **artifact critique** (strongest for complex things — a landing page, an essay); and **rapid classification** of a long list of concrete instances (strongest when instances are simple/atomic, where the **rejections** expose the discriminator fast). The "why" — and especially the rejections — reveal the real criteria. Whichever you use, actively hunt **near-misses**: things that *look* like they satisfy the concept but the user rejects — the file's most valuable content. Still no file.
 
-**Phase 4 — Teach-back.** Switch roles: explain the concept *as if teaching a bright 18-year-old with general knowledge but zero domain experience* — fully self-contained, leaning on **none** of this session's shorthand or jargon. (Catching yourself reference in-session context is the tell you're faking understanding.) **This is where the file is created.** Your teach-back *is* the draft — write it straight into `~/.claude/knowledge/<concept>.md` and iterate on the file directly. The user nudges the actual file, not a verbal proxy, so what they approve is exactly what ships.
+**Phase 4 — Teach-back.** Switch roles: explain the concept *as if teaching a bright 18-year-old with general knowledge but zero domain experience* — fully self-contained, leaning on **none** of this session's shorthand or jargon. (Catching yourself reference in-session context is the tell you're faking understanding.) **This is where the file is created.** Your teach-back *is* the draft — write it straight into `~/.claude/skills/_knowledge/<concept>.md` and iterate on the file directly. The user nudges the actual file, not a verbal proxy, so what they approve is exactly what ships.
 
 **Phase 5 — Converge.** Repeat teach-back, refining the file, until the **user** declares 100% alignment. The exit is always the user's call — never declare done yourself.
 
@@ -58,7 +58,7 @@ Read `LEARNINGS.md` (this skill's folder) at the start of every run and apply it
 ## Lifecycle
 
 - **One session = one concept = one file**, unless the user explicitly says otherwise.
-- Files live in `~/.claude/knowledge/<concept>.md` (kebab-case filename).
+- Files live in `~/.claude/skills/_knowledge/<concept>.md` (kebab-case filename).
 - **On revisit:** if a file for the concept already exists, read it first, assess how complete and correct the current understanding is, and **jump into the funnel at the matching phase** rather than restarting from Phase 1. Tell the user where you're starting and why.
 
 ## Suggested file structure
@@ -98,6 +98,6 @@ came to life, if that illuminates the big picture. This is the first-principles
 
 ## Starting a session
 
-1. Confirm the concept and check `~/.claude/knowledge/` for an existing file.
+1. Confirm the concept and check `~/.claude/skills/_knowledge/` for an existing file.
 2. If none, begin Phase 1. If one exists, read it, assess, and jump to the right phase.
 3. Drive the funnel, announcing each transition. Let the user steer.

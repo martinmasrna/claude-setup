@@ -1,6 +1,6 @@
 ---
 name: cleanse-code
-description: Bring a codebase toward "clean" as defined entirely by the user's personal taste file at ~/.claude/knowledge/clean-code.md — not any generic notion of clean code. A highly interactive, propose-don't-apply audit: it reads the taste file fresh, gathers the code's intent, surfaces only genuine cleanliness issues ranked by how much they move the purity gestalt, and reaches a clean end state *with* the user. Use when the user wants to clean up / tidy / "cleanse" code, judge how clean something is, or improve cleanliness. If the code is already clean, it says so and stops.
+description: Bring a codebase toward "clean" as defined entirely by the user's personal taste file at ~/.claude/skills/_knowledge/clean-code.md — not any generic notion of clean code. A highly interactive, propose-don't-apply audit: it reads the taste file fresh, gathers the code's intent, surfaces only genuine cleanliness issues ranked by how much they move the purity gestalt, and reaches a clean end state *with* the user. Use when the user wants to clean up / tidy / "cleanse" code, judge how clean something is, or improve cleanliness. If the code is already clean, it says so and stops.
 ---
 
 # cleanse-code
@@ -9,7 +9,7 @@ Get a codebase to **clean**, where *clean* means exactly what the user's taste f
 
 ## Source of truth — read it first, every run
 
-`~/.claude/knowledge/clean-code.md` **is** the definition of clean for this skill. **Read it in full at the start of every run** and treat it as authoritative. Do not lean on a generic "clean code" notion from training data — the user's sense is specific and in places contrary to convention (e.g. what-comments are *dirt*, not care). That file is the spec; this file is only the procedure. If the two ever seem to disagree, the taste file wins.
+`~/.claude/skills/_knowledge/clean-code.md` **is** the definition of clean for this skill. **Read it in full at the start of every run** and treat it as authoritative. Do not lean on a generic "clean code" notion from training data — the user's sense is specific and in places contrary to convention (e.g. what-comments are *dirt*, not care). That file is the spec; this file is only the procedure. If the two ever seem to disagree, the taste file wins.
 
 The orientation below is a map, not a substitute — it exists so you know *which* part of the taste file a moment calls for. Always judge against the file itself.
 
