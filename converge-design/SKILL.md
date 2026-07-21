@@ -115,6 +115,13 @@ code** — everything you need is in `_context/`.
    the gate: do not generate until the next branch is unambiguous. A verdict ("#2 is
    best") tells you where the user landed, not where to go next — keep talking until
    intent is crystal clear.
+   **On the hero/richest surface, don't lock *layout* while converging the visual
+   language.** Design is judged holistically: a composition that feels broken (e.g.
+   output with nowhere to live, a cramped pane) contaminates every judgment about color,
+   type, and hierarchy — the user can only react to the whole package. If a layout
+   complaint surfaces, treat it as load-bearing, not a "later, screen-specific" detail;
+   make layout a free dimension early and lock it only once the composition feels right.
+   Deferring it tends to stall later rounds on knobs that were never the real problem.
 
 2. **Choose render mode** from the locked/free split:
    - **Divergent siblings** (different layouts/directions, little shared code) →
@@ -122,6 +129,11 @@ code** — everything you need is in `_context/`.
    - **Variations on a locked structure** (color, type scale, spacing — one knob) →
      **one page with a switcher navbar**, N variants inline (can be 12–20). Typical for
      tight rounds near the leaves, and whenever separate pages would share most code.
+     In these rounds, also give the user a **freeform input** beside the curated presets
+     — a native `<input type="color">` + hex field for color, a text field for fonts/sizes
+     — so they can explore past your pre-picks. It works in a static mock and often
+     surfaces the winner you didn't think to offer. Derive dependent shades from the one
+     free value (e.g. CSS `color-mix`) so a single input re-themes everything live.
 
 3. **Generate.** Every mockup links `_context/tokens.css` so locked dimensions are
    *exactly* the real values. **Mind the relative path:** mockups live in nested
