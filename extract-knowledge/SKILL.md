@@ -17,6 +17,8 @@ The output is **not for a human and not for this conversation** — it is for an
 
 You drive the progression. When a phase feels exhausted, **announce the transition and propose moving on** — the user can approve, hold you in the current phase, or jump you ahead at any time. Never advance silently.
 
+**Public concepts invert the funnel.** The phases below assume the concept is *private* — a personal taste or standard that exists nowhere else. Many aren't: an established craft, discipline, or well-documented domain is already in your training data, and interviewing the user about it just makes them recite what you already know. When the concept is largely public, say so and **open at Phase 4** — present your full model and let them attack it. The tacit knowledge is exactly the *delta* between the public account and theirs, and correcting a wrong model surfaces that delta faster than any open question. Phases 1–3 then become probes you reach back for on whatever their corrections open up. Warn once that a polished model anchors, and ask them to read it adversarially.
+
 **Phase 1 — Open.** Broad, open-ended, Socratic questions. The user writes a lot; you mostly listen and probe. Ask "why does that matter?" and ladder down toward bedrock — this is where you surface the **motivation**: why the concept exists, what problem it solves, where it came from. No file exists yet.
 
 **Phase 2 — Narrow.** Your questions sharpen; their answers shorten. You are triangulating specific criteria, not gathering prose. Still chat-only, no file.
@@ -99,5 +101,5 @@ came to life, if that illuminates the big picture. This is the first-principles
 ## Starting a session
 
 1. Confirm the concept and check `~/.claude/skills/_knowledge/` for an existing file.
-2. If none, begin Phase 1. If one exists, read it, assess, and jump to the right phase.
+2. If none, judge whether the concept is public or private and begin at Phase 4 or Phase 1 accordingly. If one exists, read it, assess, and jump to the right phase.
 3. Drive the funnel, announcing each transition. Let the user steer.
