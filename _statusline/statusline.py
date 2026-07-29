@@ -35,8 +35,17 @@ BAR_WIDTH = 14
 FOLDER = "\U0001F4C1"
 
 
-def threshold_color(pct):
-    """Green under 70%, yellow approaching the limit, red once it's tight."""
+def context_color(pct):
+    """Context window: green under 50%, yellow from 50%, red from 70%."""
+    if pct >= 70:
+        return RED
+    if pct >= 50:
+        return YELLOW
+    return GREEN
+
+
+def usage_color(pct):
+    """5-hour usage: green under 70%, yellow from 70%, red from 90%."""
     if pct >= 90:
         return RED
     if pct >= 70:
@@ -113,7 +122,7 @@ def build(data):
     if not used and size and pct is not None:
         used = int(size * pct / 100)
     if pct is not None:
-        color = threshold_color(pct)
+        color = context_color(pct)
         segments.append(
             f"{bar(pct, color)} {BOLD}{pct:.0f}%{RESET} {DIM}({tokens(used)}/{tokens(size)}){RESET}"
         )
@@ -121,7 +130,7 @@ def build(data):
     five_hour = (data.get("rate_limits") or {}).get("five_hour") or {}
     fh_pct = five_hour.get("used_percentage")
     if fh_pct is not None:
-        fh_color = threshold_color(fh_pct)
+        fh_color = usage_color(fh_pct)
         seg = f"{fh_color}{fh_pct:.0f}%{RESET}"
         resets_at = five_hour.get("resets_at")
         if resets_at:
