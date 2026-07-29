@@ -53,6 +53,11 @@ def usage_color(pct):
     return GREEN
 
 
+def model_name(display_name):
+    """Drop the parenthetical suffix: 'Opus 5 (1M context)' -> 'Opus 5'."""
+    return display_name.split(" (")[0].strip() or display_name
+
+
 def tokens(n):
     if n >= 1_000_000:
         return f"{n / 1_000_000:.1f}M"
@@ -100,7 +105,7 @@ def build(data):
     cwd = data.get("workspace", {}).get("current_dir") or os.getcwd()
     folder = os.path.basename(cwd.rstrip("/\\")) or cwd
 
-    line1 = f"{CYAN}{BOLD}[{model}]{RESET} " if model else ""
+    line1 = f"{CYAN}{BOLD}[{model_name(model)}]{RESET} " if model else ""
     line1 += f"{FOLDER} {folder}"
 
     branch = git_branch(cwd)
