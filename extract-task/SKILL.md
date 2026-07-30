@@ -1,6 +1,6 @@
 ---
 name: extract-task
-description: Extract full context for a single, non-trivial task through a guided interactive conversation, then carry the task out. The user brings the problem; this skill makes sure Claude has all the context, data, and constraints it needs BEFORE it starts working, so the task gets done right the first time. Invoke when the user has a specific one-off task or problem and wants to be sure Claude is fully briefed before diving in (e.g. "/extract-task", "help me brief you on this before you start", "I have a tricky task — make sure you understand it fully first"). Do NOT fire for trivial or already-well-specified tasks where the intent is clear — just do those. Unlike extract-prompt, this does NOT produce a reusable prompt; it gathers context and then executes.
+description: Extract full context for a single, non-trivial task through a guided interactive conversation, then carry the task out. The user brings the problem; this skill makes sure Claude has all the context, data, and constraints it needs BEFORE it starts working, so the task gets done right the first time. Invoke when the user has a specific one-off task or problem and wants to be sure Claude is fully briefed before diving in (e.g. "/extract-task", "help me brief you on this before you start", "I have a tricky task — make sure you understand it fully first"). Do NOT fire for trivial or already-well-specified tasks where the intent is clear — just do those. The distinguishing signal is the user's wish to be briefed first, not anything in the task itself, so treat the explicit `/extract-task` invocation as the primary trigger and fire autonomously only when that wish is clear from the phrasing; when in doubt, just do the task (or ask) rather than opening an interrogation. Unlike extract-prompt, this does NOT produce a reusable prompt; it gathers context and then executes.
 ---
 
 # Extract Task
@@ -90,11 +90,7 @@ Once you have the go-ahead, **get on with it** — you have the context; use it.
 
 ## Self-improvement
 
-Read `LEARNINGS.md` (this skill's folder) at the start of every run and apply it. After the task is done, reflect on the *session itself*: did anything teach a reusable lesson — one that would help on a *different* task next time? Insights specific to today's task don't count. If there's a generalizable lesson, **route it by kind**:
+At the start of every run, read `LEARNINGS.md` (this skill's folder) and apply it. After the task is done, run the retrospective — the mechanism and guardrails (route-by-kind, graduation, and the hard rules on never editing/writing without approval) live in `../_shared/self-improvement.md`; **read it before writing to either file.** Skill-specific:
 
-- **An elicitation heuristic, or a read on how this user's context surfaces** (which question drew out the hidden constraint, where investigation beat asking, where they stalled) → propose it in one line and, on their confirmation, **append to `LEARNINGS.md`**. The cheap staging area — low stakes, so real lessons get captured.
-- **A structural fix to the procedure itself** (a missing dimension, a better question order, a calibration miss) → propose the concrete `SKILL.md` edit and apply it **only on the user's explicit approval**.
-
-**Graduation.** When a staged learning has proven stable across sessions, propose promoting it *into* `SKILL.md` (on approval) and delete it from the log. Keep `LEARNINGS.md` pruned so it stays a staging area, not a bloated changelog — `SKILL.md` is loaded every run, so it must stay lean. Edits that refine the procedure should land *in place*, leaving the file the same length or shorter.
-
-**Hard rules.** Never edit `SKILL.md` without the user's explicit approval — no silent auto-edits, ever. Never write any lesson, to either file, silently; every change is proposed first. Guard against overfitting to one awkward session. A no-op retrospective — "nothing reusable today" — is the common, correct outcome; don't manufacture a lesson.
+- **Reusable means** it would help on a *different task* next time; anything specific to today's task doesn't count.
+- **A good staged learning here:** an elicitation heuristic, or a read on how this user's context surfaces — which question drew out the hidden constraint, where investigation beat asking, where they stalled.

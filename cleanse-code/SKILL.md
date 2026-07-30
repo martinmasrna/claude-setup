@@ -13,7 +13,14 @@ Get a codebase to **clean**, where *clean* means exactly what the user's taste f
 
 The orientation below is a map, not a substitute — it exists so you know *which* part of the taste file a moment calls for. Always judge against the file itself.
 
-**Thin orientation (judge against the real file, not this):** clean = the *fittest, least arbitrary* expression of what the code is for, **always relative to context** — nothing is clean in the absolute. Two mental models: **grid vs. maze** (navigability) and **the messy room** (a 0–100% purity gestalt, never pass/fail). Two levels: **tidy** (no arbitrary form or means) → **elegant** (parts fuse into a whole greater than their sum). Optimize for the **human** reader; LLM-clean comes free. The named levers are: (1) one place to change, (2) no useless parts, (3) fewest lines that stay clear, (4) zero-question onboarding, (5) clean module boundaries, (6) room to breathe, (7) self-evident names sized to context, (8) consistency/symmetry, (9) make bad states unrepresentable, (10) one altitude per unit, (11) no hidden side effects. Protect **#1 (one place to change)** and **#3/clarity** hardest when levers conflict. Keystone near-misses to watch for: **what-comments** (narrating what the code does = compensation for code that failed to explain itself) and the **Rube Goldberg / over-engineering** trap (works and looks neat ≠ clean; speculative abstraction and over-defensive guards against impossible states are arbitrary lumps).
+**Orientation — an index into `clean-code.md`, not a summary of it.** These are the file's own section names, listed so you know *where to jump*; their meaning lives only in the file. Never let a label below stand in for its definition — that substitution is exactly how this orientation would silently drift out of sync with the taste file.
+
+- **Mental models:** grid vs. maze · the messy room.
+- **The climb:** chaos → tidy → elegant.
+- **Asymmetry:** optimize for the **human** reader.
+- **The 11 levers:** (1) one place to change · (2) no useless parts · (3) fewest lines that stay clear · (4) zero-question onboarding · (5) clean module boundaries · (6) room to breathe · (7) self-evident names, sized to context · (8) consistency / symmetry · (9) make bad states unrepresentable · (10) one altitude per unit · (11) no hidden side effects.
+- **Protected hardest when levers conflict:** #1 (one place to change) and #3 (clarity).
+- **Keystone near-misses:** comments that narrate *what* · works ≠ clean (the Rube Goldberg / over-engineering trap).
 
 ## Non-negotiables (these override any instinct to be helpful)
 
@@ -72,11 +79,7 @@ End when the codebase is clean and the user has signed off on every change — o
 
 ## Self-improvement
 
-Read `LEARNINGS.md` (this skill's folder) at the start of every run and apply it. At the **end** of a session, reflect: did anything teach a reusable lesson — one that would help on a *different* codebase next time? Observations specific to today's code don't count. If there is one, **route it by kind**:
+At the start of every run, read `LEARNINGS.md` (this skill's folder) and apply it. At the **end** of a session, run the retrospective — the mechanism and guardrails (route-by-kind, graduation, and the hard rules on never editing/writing without approval) live in `../_shared/self-improvement.md`; **read it before writing to either file.** Skill-specific:
 
-- **The user's cleanliness taste, or a workflow heuristic** (how they judge, what they reject, what made the session go better) → propose it in one line and, on their confirmation, **append to `LEARNINGS.md`**. This is the cheap staging area — low stakes, so real lessons actually get captured.
-- **A structural fix to the procedure itself** (a missing gate, a better step ordering) → propose the concrete `SKILL.md` edit and apply it **only on the user's explicit approval**.
-
-**Graduation.** When a staged learning has proven stable across sessions, propose promoting it *into* `SKILL.md` (on approval) and delete it from the log. Keep `LEARNINGS.md` pruned so it stays a staging area, not a parallel ruleset that rots into a maze.
-
-**Hard rules.** Never edit `SKILL.md` without the user's explicit approval — no silent auto-edits, ever. Never write any lesson, to either file, silently; every change is proposed first. A no-op retrospective ("nothing reusable today") is the common, correct outcome — don't manufacture a lesson. The skills folder is a git repo; that's the audit trail.
+- **Reusable means** it would help on a *different codebase* next time; observations specific to today's code don't count.
+- **A good staged learning here:** the user's cleanliness taste, or a workflow heuristic — how they judge, what they reject, what made the session go better.
