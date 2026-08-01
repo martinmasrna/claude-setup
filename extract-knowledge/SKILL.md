@@ -25,7 +25,7 @@ You drive the progression. When a phase feels exhausted, **announce the transiti
 
 **Phase 3 — Probe.** Reach for whichever technique fits the concept's grain: **contrast pairs** (two snippets/designs — which is better, and *why*); **artifact critique** (strongest for complex things — a landing page, an essay); and **rapid classification** of a long list of concrete instances (strongest when instances are simple/atomic, where the **rejections** expose the discriminator fast). The "why" — and especially the rejections — reveal the real criteria. Whichever you use, actively hunt **near-misses**: things that *look* like they satisfy the concept but the user rejects — the file's most valuable content. Still no file.
 
-**Phase 4 — Teach-back.** Switch roles: explain the concept *as if teaching a bright 18-year-old with general knowledge but zero domain experience* — fully self-contained, leaning on **none** of this session's shorthand or jargon. (Catching yourself reference in-session context is the tell you're faking understanding.) **This is where the file is created.** Your teach-back *is* the draft — write it straight into `~/.claude/skills/_knowledge/<concept>.md` and iterate on the file directly. The user nudges the actual file, not a verbal proxy, so what they approve is exactly what ships.
+**Phase 4 — Teach-back.** Switch roles: explain the concept *as if teaching a bright 18-year-old with general knowledge but zero domain experience* — fully self-contained, leaning on **none** of this session's shorthand or jargon. (Catching yourself reference in-session context is the tell you're faking understanding.) **This is where the file is created.** Your teach-back *is* the draft — write it straight into the knowledge file (at the path decided per Lifecycle) and iterate on the file directly. The user nudges the actual file, not a verbal proxy, so what they approve is exactly what ships.
 
 **Phase 5 — Converge.** Repeat teach-back, refining the file, until the **user** declares 100% alignment. The exit is always the user's call — never declare done yourself.
 
@@ -40,10 +40,9 @@ Editing a file in place causes anchoring — you patch existing structure instea
 Write the file for a cold agent on a context budget. **As long as necessary, no longer** — be mindful of bloat; this will be loaded into a future context window.
 
 - **Motivation before mechanics.** Lead with the *why*: what problem the concept solves, the context it lives in, when an agent should reach for it, and how it came to be. This first-principles layer lets a future agent *generalize* to unseen cases instead of mechanically pattern-matching rules. It is not optional throat-clearing — it is the part that makes the rules transferable.
-- **Principle-first.** State each abstract criterion in your own words, as the primary content. Examples illustrate principles; they never define them.
-- **Cage the examples.** A known failure mode: LLMs latch onto an example's *surface features* (language, domain, variable names) and miss the principle. Prevent it: subordinate every example to a stated principle, and annotate it — *"What this shows: …  What's incidental: …"* — so the future agent knows where to look and what to ignore.
-- **Include near-misses.** For key principles, add a counter-example that **shares surface features but violates the principle**. This forces the discriminator into the principle, where it belongs, because the surface can't tell the two apart.
-- **Anchor everything.** Every abstract criterion gets ≥1 concrete example that the user explicitly endorsed during the session. No free-floating maxims.
+- **Principle-first.** State each criterion in your own words as the primary content. Principles are the file; examples, when used, only illustrate — they never define.
+- **Examples are optional and depend on the knowledge type — not a requirement.** Concrete, atomic domains (code, visual design) are hard to convey without them; abstract, first-principles knowledge is often clearer and *more durable* as pure principle, because a worked example anchors a cold agent on its surface features and rots over time. Judge per concept, and let the user's preference win.
+- **When you do use an example, cage it:** subordinate it to a stated principle and annotate — *"What this shows: … What's incidental: …"* — so the agent knows where to look and what to ignore. For a key discriminator, prefer a **near-miss** (a look-alike that violates the principle); when no example is warranted, state the discriminator abstractly instead.
 - **Dissent log.** End the file with a short section capturing anything left unresolved and any point where the user overrode your instinct. Future agents benefit from knowing the soft spots, not just the settled doctrine.
 
 ## Self-improvement (Phase 6 retrospective)
@@ -60,12 +59,12 @@ Read `LEARNINGS.md` (this skill's folder) at the start of every run and apply it
 ## Lifecycle
 
 - **One session = one concept = one file**, unless the user explicitly says otherwise.
-- Files live in `~/.claude/skills/_knowledge/<concept>.md` (kebab-case filename).
+- **Decide placement with the user, don't default.** Personal, cross-project taste (read by a global skill anywhere) → `~/.claude/skills/_knowledge/<concept>.md`. Knowledge tied to one project → that project's repo, matching its conventions (e.g. beside sibling knowledge files) so it actually loads in that project's context. Kebab-case filename either way; when unsure, ask.
 - **On revisit:** if a file for the concept already exists, read it first, assess how complete and correct the current understanding is, and **jump into the funnel at the matching phase** rather than restarting from Phase 1. Tell the user where you're starting and why.
 
 ## Suggested file structure
 
-Adapt per concept; don't force a rigid template. A reasonable default:
+Adapt per concept; don't force a rigid template — the Example/Near-miss blocks are optional (see Output file principles). A reasonable default:
 
 ```markdown
 # <Concept>
@@ -100,6 +99,6 @@ came to life, if that illuminates the big picture. This is the first-principles
 
 ## Starting a session
 
-1. Confirm the concept and check `~/.claude/skills/_knowledge/` for an existing file.
+1. Confirm the concept and check for an existing file on it — global `~/.claude/skills/_knowledge/`, and the relevant project repo if it's project-specific.
 2. If none, judge whether the concept is public or private and begin at Phase 4 or Phase 1 accordingly. If one exists, read it, assess, and jump to the right phase.
 3. Drive the funnel, announcing each transition. Let the user steer.
