@@ -1,10 +1,9 @@
 ---
 name: writing-taste
-description: "Prose: most sentences simply communicate — engineered-line density is the AI tell. Copy: every element leads with reader self-interest"
+description: "Most sentences simply communicate — engineered-line density is the AI tell; every copy element leads with reader self-interest"
 metadata:
   type: feedback
 ---
 
-**Prose density is the AI tell.** A draft read as AI-written not from any single bad line but from *density*: every paragraph carried a reversal, a slogan, or a mic-drop; the prose never relaxed into ordinary explanation. Same family: "not X, but Y" binaries, theatrical transitions ("It gets stranger", "Sit with that"), one-sentence paragraphs for emphasis, reader-winking. Target voice: someone who read the source carefully, became genuinely fascinated, and now explains it in clear, natural language. Draft so most sentences just communicate; then audit for line-density — count the sentences trying to be quoted and cut until the survivors stand alone. Never end consecutive sections on a punch.
-
-**WIIFM before wow.** Merely-interesting elements ("look at this weird fact") get rejected wholesale. Every hook, tease, or bullet must answer "what does reading this do for my week?" (consumption fuel: threat, tool, armor, personal stake) or "what does repeating it do for my image?" (share fuel — sharing is self-presentation). Superlatives are carried by numbers ("8,399,989,719"), never adjectives — adjective-superlatives are the slop uniform and trigger tribe-adjacency avoidance. When a line of mine sounds clever, check whether it contains a claim; rhetorical shapes with no thought inside are worse than saying nothing.
+- **Most sentences just communicate.** The AI tell is density of engineered lines: reversals, slogans, mic-drops, "not X but Y" binaries, theatrical transitions, one-sentence paragraphs for emphasis. Target voice: someone who read the source carefully, became genuinely fascinated, and explains it in clear natural language. Audit drafts for sentences trying to be quoted and cut until the survivors stand alone; never end consecutive sections on a punch.
+- **Reader self-interest before "interesting".** Every hook, tease, or bullet must answer "what does reading this do for my week?" (threat, tool, armor, personal stake) or "what does repeating it do for my image?" — sharing is self-presentation. Merely-interesting gets cut. Superlatives are carried by numbers, never adjectives. When a line sounds clever, check whether it contains a claim.
