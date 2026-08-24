@@ -22,6 +22,7 @@
     "shell-snapshots": true,
     "tasks": true,
     "telemetry": true,
+    ".gitignore": true,
     ".last-cleanup": true,
     ".last-update-result.json": true,
     ".vscode": true
