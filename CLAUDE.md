@@ -1,11 +1,14 @@
 # Knowledge & memory policy
 
 - Auto-memory is on and lives in each project's `memory/` folder (via `autoMemoryDirectory` in `.claude/settings.local.json`). Write memories freely per the built-in guidance; never interrupt Martin to confirm or announce a memory — he reviews the files himself in his editor.
+
 - Durable project truth the repo depends on (decisions with rationale, chosen approaches, constraints) goes in the repo's `knowledge/` folder so it's git-visible — memory is the cross-session notebook, not the project record.
+
 
 # User-level knowledge index
 
 @~/.claude/knowledge/INDEX.md
+
 
 # How to respond
 
