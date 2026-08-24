@@ -5,7 +5,7 @@ metadata:
   type: feedback
 ---
 
-- **Cut labels by default.** The AI failure mode is over-labeling: headings restating their content, sub-captions under numbers, a percentage and a bar encoding the same value, decorative rank numbers, stats not decision-relevant on that screen, captions explaining what a figure already shows. Leave dense sections slightly under-labelled — Martin sweeps manually and would rather add back than remove.
+- **Cut labels by default.** The AI failure mode is over-labeling: headings restating their content, sub-captions under numbers, a percentage and a bar encoding the same value as two separate elements (a value label on the bar itself is fine — there, the number is evidence, not decoration), decorative rank numbers, stats not decision-relevant on that screen, captions explaining what a figure already shows. Leave dense sections slightly under-labelled — Martin sweeps manually and would rather add back than remove.
 
 - **One goal per surface, one primary action.** Anything not serving the surface's goal is useless, including neutral-looking chrome (wordmark, nav, explainer pages). Justify each element out loud; push back on a cut only when it has a concrete cost.
 
