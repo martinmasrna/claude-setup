@@ -1,0 +1,29 @@
+{
+  "files.exclude": {
+    "backups": true,
+    "cache": true,
+    "chrome": true,
+    "daemon": true,
+    "daemon-auth-cooldown": true,
+    "daemon-auth-status.json": true,
+    "daemon.log": true,
+    "downloads": true,
+    "file-history": true,
+    "history.jsonl": true,
+    "jobs": true,
+    "mcp-needs-auth-cache.json": true,
+    "paste-cache": true,
+    "plans": true,
+    "plugins": true,
+    "projects": true,
+    "session-env": true,
+    "settings.json": true,
+    "sessions": true,
+    "shell-snapshots": true,
+    "tasks": true,
+    "telemetry": true,
+    ".last-cleanup": true,
+    ".last-update-result.json": true,
+    ".vscode": true
+  }
+}

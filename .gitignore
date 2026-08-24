@@ -1,1 +1,9 @@
+# Whitelist: only the Claude brain enters git. Everything else in ~/.claude is runtime clutter.
+/*
+!/.gitignore
+!/CLAUDE.md
+!/knowledge/
+!/skills/
+!/templates/
+!/.vscode/
 .DS_Store
