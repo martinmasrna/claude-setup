@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Claude Code status line.
 
-Reads the session JSON on stdin and prints one line:
+Reads the session JSON on stdin and prints two lines:
 
-    Opus · ~/Projects/app · ⎇ main · [████░░░░░░] 45.2k/200k (23%) · 5h 45% (reset in 2h 24m)
+    [Opus 5] 📁 app  | main
+    ██████████░░░░ 45% (900k/1.0M)  | 45% (resets in 2h23m)
 
+Cross-platform (macOS/Linux/Windows) — needs python3 on PATH.
 Configured via the `statusLine` key in ~/.claude/settings.json.
 """
 
@@ -14,27 +16,46 @@ import subprocess
 import sys
 import time
 
+# Windows terminals (PS 5.1) default to an OEM codepage that mangles block
+# chars/emoji; force UTF-8 on stdout. No-op on platforms where this isn't needed.
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 RESET = "\033[0m"
 DIM = "\033[2m"
 BOLD = "\033[1m"
 CYAN = "\033[36m"
-BLUE = "\033[34m"
-MAGENTA = "\033[35m"
 GREEN = "\033[32m"
 YELLOW = "\033[33m"
 RED = "\033[31m"
 
-SEP = f"{DIM} · {RESET}"
-BAR_WIDTH = 10
+BAR_WIDTH = 14
+FOLDER = "\U0001F4C1"
 
 
-def threshold_color(pct):
-    """Green under half, yellow approaching the limit, red once it's tight."""
-    if pct >= 80:
+def context_color(pct):
+    """Context window: green under 50%, yellow from 50%, red from 70%."""
+    if pct >= 70:
         return RED
     if pct >= 50:
         return YELLOW
     return GREEN
+
+
+def usage_color(pct):
+    """5-hour usage: green under 70%, yellow from 70%, red from 90%."""
+    if pct >= 90:
+        return RED
+    if pct >= 70:
+        return YELLOW
+    return GREEN
+
+
+def model_name(display_name):
+    """Drop the parenthetical suffix: 'Opus 5 (1M context)' -> 'Opus 5'."""
+    return display_name.split(" (")[0].strip() or display_name
 
 
 def tokens(n):
@@ -48,25 +69,14 @@ def tokens(n):
 def bar(pct, color):
     filled = int(round(pct / 100 * BAR_WIDTH))
     filled = max(0, min(BAR_WIDTH, filled))
-    return f"{DIM}[{RESET}{color}{'█' * filled}{RESET}{DIM}{'░' * (BAR_WIDTH - filled)}]{RESET}"
+    return f"{color}{'█' * filled}{DIM}{'░' * (BAR_WIDTH - filled)}{RESET}"
 
 
 def duration(seconds):
-    """Seconds -> '2h 24m', '24m', or '<1m'."""
+    """Seconds -> '2h23m' or '23m'."""
     seconds = max(0, int(seconds))
     h, m = seconds // 3600, (seconds % 3600) // 60
-    if h:
-        return f"{h}h {m}m"
-    return f"{m}m" if m else "<1m"
-
-
-def home_relative(path):
-    home = os.path.expanduser("~")
-    if path == home:
-        return "~"
-    if path.startswith(home + os.sep):
-        return "~" + path[len(home):]
-    return path
+    return f"{h}h{m}m" if h else f"{m}m"
 
 
 def git_branch(cwd):
@@ -91,68 +101,67 @@ def git_branch(cwd):
 
 
 def build(data):
-    parts = []
-
     model = data.get("model", {}).get("display_name")
-    if model:
-        parts.append(f"{BOLD}{CYAN}{model}{RESET}")
-
     cwd = data.get("workspace", {}).get("current_dir") or os.getcwd()
-    parts.append(f"{BLUE}{home_relative(cwd)}{RESET}")
+    folder = os.path.basename(cwd.rstrip("/\\")) or cwd
+
+    line1 = f"{CYAN}{BOLD}[{model_name(model)}]{RESET} " if model else ""
+    line1 += f"{FOLDER} {folder}"
 
     branch = git_branch(cwd)
     if branch:
-        parts.append(f"{MAGENTA}⎇ {branch}{RESET}")
+        line1 += f"  {DIM}|{RESET} {GREEN}{branch}{RESET}"
+
+    lines = [line1]
+
+    segments = []
 
     ctx = data.get("context_window") or {}
-    if ctx:
-        pct = ctx.get("used_percentage")
-        size = ctx.get("context_window_size") or 0
-        usage = ctx.get("current_usage") or {}
-        used = sum(
-            usage.get(k, 0) or 0
-            for k in (
-                "input_tokens",
-                "cache_creation_input_tokens",
-                "cache_read_input_tokens",
-            )
+    pct = ctx.get("used_percentage")
+    size = ctx.get("context_window_size") or 0
+    usage = ctx.get("current_usage") or {}
+    used = usage.get("total_input_tokens", 0) or 0
+    # Fall back to deriving one from the other if either side is missing.
+    if pct is None and size:
+        pct = used / size * 100
+    if not used and size and pct is not None:
+        used = int(size * pct / 100)
+    if pct is not None:
+        color = context_color(pct)
+        segments.append(
+            f"{bar(pct, color)} {BOLD}{pct:.0f}%{RESET} {DIM}({tokens(used)}/{tokens(size)}){RESET}"
         )
-        # Fall back to deriving one from the other if either side is missing.
-        if pct is None and size:
-            pct = used / size * 100
-        if not used and size and pct is not None:
-            used = int(size * pct / 100)
-        if pct is not None:
-            color = threshold_color(pct)
-            segment = bar(pct, color)
-            if size:
-                segment += f" {tokens(used)}{DIM}/{RESET}{tokens(size)}"
-            parts.append(segment)
 
     five_hour = (data.get("rate_limits") or {}).get("five_hour") or {}
-    pct = five_hour.get("used_percentage")
-    if pct is not None:
-        color = threshold_color(pct)
-        segment = f"{color}{pct:.0f}%{RESET}"
+    fh_pct = five_hour.get("used_percentage")
+    if fh_pct is not None:
+        fh_color = usage_color(fh_pct)
+        seg = f"{fh_color}{fh_pct:.0f}%{RESET}"
         resets_at = five_hour.get("resets_at")
         if resets_at:
-            segment += f" {DIM}(reset in {duration(resets_at - time.time())}){RESET}"
-        parts.append(segment)
+            seg += f" {DIM}(resets in {duration(resets_at - time.time())}){RESET}"
+        segments.append(seg)
 
-    return SEP.join(parts)
+    if segments:
+        lines.append(f"  {DIM}|{RESET} ".join(segments))
+
+    return lines
 
 
 def main():
     try:
-        data = json.load(sys.stdin)
+        # A leading BOM shows up when stdin is piped through PowerShell on
+        # Windows; strip it before parsing so that path doesn't degrade silently.
+        data = json.loads(sys.stdin.read().lstrip(chr(0xFEFF)))
     except (json.JSONDecodeError, ValueError):
         data = {}
     try:
-        line = build(data)
+        lines = build(data)
     except Exception:
         # A status line must never fail loudly — degrade to the essentials.
-        line = home_relative(os.getcwd())
-    print(line)
+        lines = [os.path.basename(os.getcwd().rstrip("/\\")) or os.getcwd()]
+    for line in lines:
+        print(line)
 
 
 if __name__ == "__main__":

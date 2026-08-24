@@ -104,6 +104,13 @@ def add_sales_tax(price):
 ```
 **D is infinitely cleaner.** C *looks* clean — documented, considerate to the newcomer, evidently effortful. That is exactly why it's the highest-value near-miss: comments that narrate *what the code does* are not cleanliness, they are **compensation for code that failed to explain itself**. Clean code makes the *what* self-evident, which makes such comments redundant. The discriminator: heavy what-comments are a *symptom of dirt*, not a sign of care.
 
+**The *argued* why is dirt too.** A non-obvious *why* is worth a line, stated as a
+fact. What fails is arguing it — naming the alternative that was rejected, why it
+was worse, what a reader might otherwise conclude — which makes the reader consume
+a case to extract one fact, and reads as the code defending itself. The test is
+whether a reader could recover it from the code, the names, or a grep: if yes,
+delete it; if no, one line and stop.
+
 ## Keystone near-miss — works ≠ clean (the Rube Goldberg machine)
 
 A Rube Goldberg machine *works*, and every piece "fits" the next — yet it's the opposite of clean: it reaches a trivial end through a sprawl of arbitrary means. It nails the wrong kind of fit (part→part) while failing the one that matters (means→end). Same lesson as the lone **key** and `x*x*x`: working, even tidy, is not clean if the means are arbitrary or pitched below the right level of abstraction. Beware judging cleanliness by *does it work* or *does it look neat* — judge it by *is this the fitting, non-arbitrary way to do it, here*.
@@ -120,5 +127,4 @@ A Rube Goldberg machine *works*, and every piece "fits" the next — yet it's th
 
 ## Dissent log
 - **The limit of DRY is deliberately unresolved.** Where does chasing "one place to change" tip into a maze of tiny indirections? The user declined to set a threshold — "would need a specific example, but it's common sense." Do not invent a rule; judge case by case.
-- **What-comments vs. why-comments.** The C-vs-D ruling is specifically about comments narrating *what* the code does. Comments explaining a non-obvious *why* may be a different animal and were not ruled on. Don't over-extend "comments = dirt" to why-comments.
 - **Source's stance:** strong cross-domain intuition for cleanliness, junior-level hands-on coding experience. The *aesthetic* is authoritative; specific code-mechanics claims (e.g. typing variables preventing errors) were offered tentatively and should be weighted as illustrations, not doctrine.

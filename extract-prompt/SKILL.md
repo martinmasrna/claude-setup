@@ -1,6 +1,6 @@
 ---
 name: extract-prompt
-description: Extract a high-quality, copy-pasteable prompt out of the user through a guided interactive conversation. The user brings the intent (what the prompt should do and why); this skill handles the prompt-engineering. Invoke ONLY when the user deliberately asks to build/write/create/improve a prompt for an LLM (e.g. "/extract-prompt", "help me write a prompt", "I need a prompt that does X"). Do NOT fire proactively just because the user happens to be drafting prompt-like text.
+description: Extract a high-quality, copy-pasteable prompt out of the user through a guided interactive conversation. The user brings the intent (what the prompt should do and why); this skill handles the prompt-engineering. Invoke ONLY when the user deliberately asks to build/write/create/improve a prompt for an LLM (e.g. "/extract-prompt", "help me write a prompt", "I need a prompt that does X"). Do NOT fire proactively just because the user happens to be drafting prompt-like text, and do NOT fire when the user wants a task actually carried out rather than reusable prompt text produced — that's extract-task.
 ---
 
 # Extract Prompt
@@ -84,11 +84,7 @@ Apply these throughout, and actively steer the user toward them — they often d
 
 ## Self-improvement
 
-Read `LEARNINGS.md` (this skill's folder) at the start of every run and apply it. After the prompt is delivered, reflect on the *session itself*: did anything teach a reusable lesson — one that would help on a *different* prompt next time? Insights specific to today's prompt don't count **here** — those belong in the prompt itself. If there is a generalizable lesson, **route it by kind**:
+At the start of every run, read `LEARNINGS.md` (this skill's folder) and apply it. After the prompt is delivered, run the retrospective — the mechanism and guardrails (route-by-kind, graduation, and the hard rules on never editing/writing without approval) live in `../_shared/self-improvement.md`; **read it before writing to either file.** Skill-specific:
 
-- **A prompt-engineering heuristic, or a read on how this user's intent surfaces** (which question drew them out, where they stalled, what framing landed) → propose it in one line and, on their confirmation, **append to `LEARNINGS.md`**. The cheap staging area — low stakes, so real lessons get captured.
-- **A structural fix to the elicitation procedure itself** (a missing dimension, a better question order, a calibration miss) → propose the concrete `SKILL.md` edit and apply it **only on the user's explicit approval**.
-
-**Graduation.** When a staged learning has proven stable across sessions, propose promoting it *into* `SKILL.md` (on approval) and delete it from the log. Keep `LEARNINGS.md` pruned so it stays a staging area, not a changelog that bloats — the active `SKILL.md` is loaded every run, so it must stay lean. Edits that refine the procedure should land *in place*, leaving the file the same length or shorter.
-
-**Hard rules.** Never edit `SKILL.md` without the user's explicit approval — no silent auto-edits, ever. Never write any lesson, to either file, silently; every change is proposed first. Guard against overfitting to one awkward session. A no-op retrospective — "nothing reusable today" — is the common, correct outcome; don't manufacture a lesson.
+- **Reusable means** it would help on a *different prompt* next time; anything specific to today's prompt belongs in the prompt itself.
+- **A good staged learning here:** a prompt-engineering heuristic, or a read on how this user's intent surfaces — which question drew them out, where they stalled, what framing landed.

@@ -47,14 +47,10 @@ Write the file for a cold agent on a context budget. **As long as necessary, no 
 
 ## Self-improvement (Phase 6 retrospective)
 
-Read `LEARNINGS.md` (this skill's folder) at the start of every run and apply it. After the knowledge file is done, reflect on the *session itself*: did anything teach a reusable lesson — one that would help across *future, different* concepts? Insights specific to today's concept don't count **here** — those belong in the knowledge file. If there is a generalizable process lesson, **route it by kind**:
+At the start of every run, read `LEARNINGS.md` (this skill's folder) and apply it. After the knowledge file is done, run the retrospective — the mechanism and guardrails (route-by-kind, graduation, and the hard rules on never editing/writing without approval) live in `../_shared/self-improvement.md`; **read it before writing to either file.** Skill-specific:
 
-- **An elicitation heuristic, or a read on how this user's tacit knowledge surfaces** (which technique drew them out, where they stalled) → propose it in one line and, on their confirmation, **append to `LEARNINGS.md`**. The cheap staging area — low stakes, so real lessons get captured.
-- **A structural fix to the funnel itself** (a missing phase cue, a better transition) → propose the concrete `SKILL.md` edit and apply it **only on the user's explicit approval**.
-
-**Graduation.** When a staged learning has proven stable across sessions, propose promoting it *into* `SKILL.md` (on approval) and delete it from the log. Keep `LEARNINGS.md` pruned so it stays a staging area, not a changelog that bloats — the active `SKILL.md` is loaded every run, so it must stay lean. Edits that refine the procedure should land *in place*, leaving the file the same length or shorter.
-
-**Hard rules.** Never edit `SKILL.md` without the user's explicit approval — no silent auto-edits, ever. Never write any lesson, to either file, silently; every change is proposed first, and on approval committed from `~/.claude/skills/` with its reasoning as the message (`git log` is the history). Guard against overfitting to one awkward session. A no-op retrospective — "nothing reusable today" — is the common, correct outcome; don't manufacture a lesson.
+- **Reusable means** it would help across *future, different* concepts; insights specific to today's concept belong in the knowledge file.
+- **A good staged learning here:** an elicitation heuristic, or a read on how this user's tacit knowledge surfaces — which technique drew them out, where they stalled.
 
 ## Lifecycle
 
