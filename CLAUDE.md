@@ -4,6 +4,8 @@
 
 - Durable project truth the repo depends on (decisions with rationale, chosen approaches, constraints) goes in the repo's `knowledge/` folder so it's git-visible — memory is the cross-session notebook, not the project record.
 
+- When Martin reviews a document with the redline tool, save the annotated CriticMarkup file verbatim to `~/.claude/redlines/` (dated filename) before resolving his edits. It is raw training data for a future document-review agent — write-only; never load it into context.
+
 
 # User-level knowledge index
 
