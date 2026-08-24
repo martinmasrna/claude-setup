@@ -30,4 +30,6 @@
 
 - Two self-directed polish passes on any artifact, then show it. Feedback converges work; solo taste loops don't. An option only needs to be good enough to judge, not finished.
 
+- Before editing a document, state its purpose in first principles, then use them when making edits.
+
 -  Keep in mind I'm just a puny human with maybe 140IQ, who isn't native English speaker. I'm not a superinteligent AI genius who carries entire dictionary in his working memory, so adjust your phrasing and vocabulary accordingly.
