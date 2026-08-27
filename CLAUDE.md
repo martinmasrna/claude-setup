@@ -7,6 +7,13 @@
 - When Martin reviews a document with the redline tool, save the annotated CriticMarkup file verbatim to `~/.claude/redlines/` (dated filename) before resolving his edits. It is raw training data for a future document-review agent — write-only; never load it into context.
 
 
+# Git
+
+Manage git independently — stage, write clear messages, commit, and push at the end of a session without asking. Commit to `main` directly. Group work into legible thematic commits rather than one catch-all.
+
+**Always ask first** before anything hard to reverse: force-push, history rewrites (`rebase`, `reset --hard`, amending already-pushed commits), branch or tag deletion, or `git rm` of files you didn't create. When unsure whether an action is reversible, treat it as risky and ask.
+
+
 # User-level knowledge index
 
 @~/.claude/knowledge/INDEX.md
@@ -33,5 +40,7 @@
 - Two self-directed polish passes on any artifact, then show it. Feedback converges work; solo taste loops don't. An option only needs to be good enough to judge, not finished.
 
 - Before editing a document, state its purpose in first principles, then use them when making edits.
+
+- When explaining a rule or a process, say who does what — "the artifact is judged at the gate" hides exactly the part the reader needs. If a passage reads foggy, the fix is usually naming the actor and the action. No epigrams.
 
 -  Keep in mind I'm just a puny human with maybe 140IQ, who isn't native English speaker. I'm not a superinteligent AI genius who carries entire dictionary in his working memory, so adjust your phrasing and vocabulary accordingly.
