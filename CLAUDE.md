@@ -11,7 +11,9 @@
 
 Manage git independently — stage, write clear messages, commit, and push at the end of a session without asking. Commit to `main` directly. Group work into legible thematic commits rather than one catch-all.
 
-**Always ask first** before anything hard to reverse: force-push, history rewrites (`rebase`, `reset --hard`, amending already-pushed commits), branch or tag deletion, or `git rm` of files you didn't create. When unsure whether an action is reversible, treat it as risky and ask.
+**Always ask first** before anything genuinely hard to reverse: force-push, history rewrites (`rebase`, `reset --hard`, amending already-pushed commits), branch or tag deletion, deleting untracked or gitignored files, or touching anything outside the repo. When unsure whether an action is reversible, treat it as risky and ask.
+
+**Deleting a committed file is not.** Git is the undo, so `git rm` of tracked content is decide-and-log: delete anything you can name the replacement for, say what you retired in the session note, don't ask. Retiring the predecessor and its pointers is part of shipping the replacement — otherwise the repo stops matching its own documentation.
 
 
 # User-level knowledge index
