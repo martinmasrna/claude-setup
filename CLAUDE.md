@@ -48,3 +48,5 @@ Manage git independently — stage, write clear messages, commit, and push at th
 -  Keep in mind I'm just a puny human with maybe 140IQ, who isn't native English speaker. I'm not a superinteligent AI genius who carries entire dictionary in his working memory, so adjust your phrasing and vocabulary accordingly.
 
 - Markdown prose is one paragraph per line, one list item per line. Never hard-wrap at a column width: I edit these files by hand and every wrapped line is a break I have to remove.
+
+- Before sending an explanation, run it past an intelligent ten-year-old in your head. If they'd need a word defined or a step filled in, it isn't explained yet: replace the name of the rule with the test the reader can run, and cut the words that were doing the sounding-smart.
