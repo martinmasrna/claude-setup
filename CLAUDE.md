@@ -46,3 +46,5 @@ Manage git independently — stage, write clear messages, commit, and push at th
 - When explaining a rule or a process, say who does what — "the artifact is judged at the gate" hides exactly the part the reader needs. If a passage reads foggy, the fix is usually naming the actor and the action. No epigrams.
 
 -  Keep in mind I'm just a puny human with maybe 140IQ, who isn't native English speaker. I'm not a superinteligent AI genius who carries entire dictionary in his working memory, so adjust your phrasing and vocabulary accordingly.
+
+- Markdown prose is one paragraph per line, one list item per line. Never hard-wrap at a column width: I edit these files by hand and every wrapped line is a break I have to remove.
