@@ -14,3 +14,5 @@ Martin's home Mac (macOS 13, Intel), the primary working environment:
 - The Codex CLI (`codex`) is installed and logged in via his ChatGPT subscription. Default model `gpt-5.6-sol` ("Sol"); `gpt-5.6-luna` ("Luna") via `-m`. Bare aliases like `sol` are rejected. Headless `claude -p` and `codex exec` were probe-verified unable to reach web or shell (permission auto-deny).
 
 - His browser viewport is small — about 1280x630 CSS px. Layout judgements are made at that size: vertical room is genuinely scarce and lines that fit on a big screen wrap for him. Check designs at roughly that height. Related: [[visual-taste]].
+
+- Tool output renders for the agent only. Anything Martin must read goes in the message body or in a file he opens; a list pasted as Bash output is invisible to him.
