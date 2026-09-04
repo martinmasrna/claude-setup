@@ -16,3 +16,5 @@ Martin's home Mac (macOS 13, Intel), the primary working environment:
 - His browser viewport is small — about 1280x630 CSS px. Layout judgements are made at that size: vertical room is genuinely scarce and lines that fit on a big screen wrap for him. Check designs at roughly that height. Related: [[visual-taste]].
 
 - Tool output renders for the agent only. Anything Martin must read goes in the message body or in a file he opens; a list pasted as Bash output is invisible to him.
+
+- Martin often drives a session from his phone or his work PC. There, a localhost page is unreachable and "have a look" means nothing; screenshots saved to disk and published artifacts reach him anywhere. Ask which machine he is on before offering anything local.
